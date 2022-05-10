@@ -1,0 +1,13 @@
+{
+    "name": "ec-cube/theitemispopular",
+    "version": "1.0.0",
+    "description": "TheItemIsPopular",
+    "type": "eccube-plugin",
+    "require": {
+      "ec-cube/plugin-installer": "~0.0.6 || ^2.0"
+    },
+    "extra": {
+      "code": "TheItemIsPopular"
+    }
+  }
+  
