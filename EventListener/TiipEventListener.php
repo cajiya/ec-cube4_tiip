@@ -2,49 +2,16 @@
 
 namespace Plugin\TheItemIsPopular\EventListener;
 
-use Eccube\Request\Context;
 use Eccube\Event\TemplateEvent;
-
-use Plugin\TheItemIsPopular\Repository\TiipCartItemRepository;
-
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 class TiipEventListener implements EventSubscriberInterface
 {
-    /**
-     * @var RequestStack
-     */
-    protected $requestStack;
 
-    /**
-     * @var Context
-     */
-    protected $requestContext;
-
-    protected $tiipCartItemRepository;
-
-    public function __construct(
-      RequestStack $requestStack,
-      Context $requestContext,
-      TiipCartItemRepository $tiipCartItemRepository
-    )
-    {
-        $this->requestStack = $requestStack;
-        $this->requestContext = $requestContext;
-        $this->tiipCartItemRepository = $tiipCartItemRepository;
-    }
+    public function __construct(){}
 
     public function TiipEventListenerFunction(TemplateEvent $event)
     {
-        $ProductId = $event->getParameter('Product')->getId();
-        $findCartInItems = $this->tiipCartItemRepository->findCartInItems($ProductId);
-
-        log_info('[TTIP]$findCartInItems',[$findCartInItems]);
-        if( empty( $findCartInItems ) ) return false;
-        
       // 拡張されるファイルに充てたSnipetsの退避
       if( $event->hasParameter('plugin_snippets') )
       {
@@ -57,25 +24,24 @@ class TiipEventListener implements EventSubscriberInterface
           }
         }
       }
-      
-      $count = count($findCartInItems);
-      $output = <<< EOM
-      <div class="js-tiip-pop" style="display:none;position: fixed;bottom: 15px;left: 15px;background: #eda106d1;color: white;padding: 15px;border-radius: 5px;">
-      この商品を{$count}人の人がカートに追加しています
-      </div>
-      <script>
-      $(function(){
-        $('.js-tiip-pop').fadeIn().delay(5000).fadeOut();
-      });
-      </script>
-EOM;
-      $event->addSnippet( $output , false);
-
+      // 拡張されるファイルに充てたSnipetsの退避
+      if( $event->hasParameter('plugin_assets') )
+      {
+        $assets = $event->getParameter('plugin_assets');
+        if( $assets )
+        {
+          foreach( $assets as $asset => $include )
+          {
+            $event->addAsset( $asset , $include);
+          }
+        }
+      }
+      $event->addAsset( 'Tiip/asset.twig' );
+      $event->addSnippet( 'Tiip/snipet.twig' );
     }
 
     public static function getSubscribedEvents()
     {
-
         return [
           'Product/detail.twig' => ['TiipEventListenerFunction'],
         ];

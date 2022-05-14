@@ -1,0 +1,16 @@
+{% set Tiip = getTiip(Product.id) %}
+{% if Tiip.CartIn > 0 or Tiip.Favorite > 0 %}
+<div class="js-tiip-pop tiip-area">
+    {% if Tiip.CartIn > 0 %}
+    <div class="tiip-cartin">
+        この商品を {{ Tiip.CartIn }}人がカートに追加しています
+    </div>
+    {% endif %}
+    {% if Tiip.Favorite > 0 %}
+    <div class="tiip-favorite">
+        この商品を {{ Tiip.Favorite }}人がお気に入りに登録しています
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+

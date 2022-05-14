@@ -1,0 +1,62 @@
+<script>
+const TiipOpt = {
+    startTime : 0, {# 表示開始までの時間(ミリ秒 1s = 1000 ) #}
+    endTime : 5000, {# 表示終了まで #}
+}
+</script>
+<style>
+:root {
+  --ttip-card-bg-color: #eda106d1; {# カード背景のカラー（デフォルト：オレンジ[#eda106d1]） #}
+  --ttip-card-txt-color: #ffffff; {# カード背景のカラー（デフォルト：ホワイト[#FFFFFFF]） #}
+  --ttip-card-timelag: 0.5s; {# カード表示／非表示時の時間差 #}
+}
+
+.tiip-area{
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    transition: all 1s; 
+    pointer-events: none;
+}
+.tiip-cartin,
+.tiip-favorite{
+    background: var(--ttip-card-bg-color);
+    color: var(--ttip-card-txt-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top:15px;
+    transform: translate(-20px, 0);
+    opacity: 0;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+.tiip-area.slideIn .tiip-cartin,
+.tiip-area.slideIn .tiip-favorite{
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.tiip-area.slideOut .tiip-cartin,
+.tiip-area.slideOut .tiip-favorite{
+    opacity: 0;
+    transform: translate(10px, 0);
+}
+.tiip-area.slideIn .tiip-cartin{
+    transition-delay: 0s;
+}
+.tiip-area.slideIn .tiip-favorite{
+    transition-delay: var(--ttip-card-timelag);
+}
+
+</style>
+<script>
+window.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(()=>{
+        document.querySelector('.js-tiip-pop').classList.add('slideIn');
+    }, TiipOpt.startTime );
+    setTimeout(()=>{
+        document.querySelector('.js-tiip-pop').classList.add('slideOut');
+    }, TiipOpt.endTime );
+},false);
+</script>

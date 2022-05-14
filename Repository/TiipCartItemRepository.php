@@ -20,26 +20,24 @@ class TiipCartItemRepository extends AbstractRepository
      *
      * @return array
      */
-    public function findCartInItems( $ProductId )
+    public function getCartInItemCount( $ProductId )
     {
-        $result = [];
+
+        $today = new \DateTime('30 days ago');
+        $limit = $today->format('Y-m-d 00:00:00');
+
         $qb = $this->createQueryBuilder('ci');
-        $CartItems = $qb->select('ci')
-            ->addSelect('pc')
+        $result = $qb->select('count(ci.id)')
             ->innerJoin('ci.ProductClass', 'pc')
+            ->innerJoin('ci.Cart', 'c')
+            ->innerJoin('pc.Product', 'p')
+            ->where('p.id = :product_id')
+            ->setParameter("product_id", $ProductId )
+            ->andWhere('c.update_date >= :limit')
+            ->setParameter("limit", $limit )
             ->getQuery()
-            ->getResult();
-        
-        foreach( $CartItems as $CartItem )
-        {
-            $ProductClass = $CartItem->getProductClass();
-            $Product = $ProductClass->getProduct();
-            if( $Product->getId() === $ProductId )
-            {
-                $result[] = $ProductClass;
-            }
-        }
-        
+            ->getSingleScalarResult();
+            
         return $result;
 
     }
