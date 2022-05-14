@@ -1,7 +1,7 @@
 {
     "name": "ec-cube/theitemispopular",
     "version": "1.0.0",
-    "description": "TheItemIsPopular",
+    "description": "商品ページ 人気演出機能",
     "type": "eccube-plugin",
     "require": {
       "ec-cube/plugin-installer": "~0.0.6 || ^2.0"
