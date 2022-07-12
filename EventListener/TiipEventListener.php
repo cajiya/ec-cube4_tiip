@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\TheItemIsPopular\EventListener;
+namespace Plugin\TheItemIsPopular42\EventListener;
 
 use Eccube\Event\TemplateEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

@@ -1,4 +1,4 @@
-# EC-CUBE4.1用 商品ページ 人気演出機能
+# EC-CUBE4.2用 商品ページ 人気演出機能
 
 商品ページに、
 - この商品を X人がカートに追加しています
@@ -42,8 +42,8 @@ const TiipOpt = {
 ```
 cd app/Plugin;
 git clone https://github.com/cajiya/ec-cube4_tiip.git;
-mv ec-cube4_tiip TheItemIsPopular;
+mv ec-cube4_tiip TheItemIsPopular42;
 cd ../../;
-php bin/console eccube:plugin:install --code="TheItemIsPopular"
+php bin/console eccube:plugin:install --code="TheItemIsPopular42"
 ```
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\TheItemIsPopular;
+namespace Plugin\TheItemIsPopular42;
 
 use Eccube\Plugin\AbstractPluginManager;
 

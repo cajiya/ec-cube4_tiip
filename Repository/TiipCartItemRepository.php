@@ -1,17 +1,17 @@
 <?php
 
-namespace Plugin\TheItemIsPopular\Repository;
+namespace Plugin\TheItemIsPopular42\Repository;
 
 use Eccube\Entity\CartItem;
 use Eccube\Repository\AbstractRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\DBAL\Connection;
 
 
 class TiipCartItemRepository extends AbstractRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CartItem::class);
     }
