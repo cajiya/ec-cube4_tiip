@@ -1,6 +1,6 @@
 {
     "name": "ec-cube/theitemispopular43",
-    "version": "4.2.0",
+    "version": "4.3.0",
     "description": "商品ページ 人気演出機能",
     "type": "eccube-plugin",
     "require": {
