@@ -3,9 +3,10 @@
 namespace Plugin\TheItemIsPopular42;
 
 use Eccube\Plugin\AbstractPluginManager;
-use Eccube\Common\EccubeConfig;
-use Psr\Container\ContainerInterface;
+
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
+
 
 class PluginManager extends AbstractPluginManager
 {
@@ -15,11 +16,10 @@ class PluginManager extends AbstractPluginManager
     public function enable( array $meta, ContainerInterface $container )
     {
         $file_system = new Filesystem();
-        $eccubeConfig = $container->get(EccubeConfig::class);
 
         $file_system->mirror(
             $this->original_file_dir.'/Tiip' ,
-            $eccubeConfig->get('eccube_theme_front_dir') . '/Tiip'
+            $container->getParameter('eccube_theme_front_dir') . '/Tiip'
         );
 
     }
@@ -27,10 +27,9 @@ class PluginManager extends AbstractPluginManager
     public function disable( array $meta, ContainerInterface $container )
     {
         $file_system = new Filesystem();
-        $eccubeConfig = $container->get(EccubeConfig::class);
         
         $file_system->remove(
-            $eccubeConfig->get('eccube_theme_front_dir') . '/Tiip'
+            $container->getParameter('eccube_theme_front_dir') . '/Tiip'
         );
     }
 
