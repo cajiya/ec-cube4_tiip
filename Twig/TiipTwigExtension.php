@@ -1,9 +1,9 @@
 <?php
 
-namespace Plugin\TheItemIsPopular42\Twig;
+namespace Plugin\TheItemIsPopular43\Twig;
 
-use Plugin\TheItemIsPopular42\Repository\TiipCartItemRepository;
-use Plugin\TheItemIsPopular42\Repository\TiipCustomerFavoriteProductRepository;
+use Plugin\TheItemIsPopular43\Repository\TiipCartItemRepository;
+use Plugin\TheItemIsPopular43\Repository\TiipCustomerFavoriteProductRepository;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;

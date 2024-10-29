@@ -40,7 +40,7 @@ const TiipOpt = {
 # インストール方法
 
 ```
-git clone https://github.com/cajiya/ec-cube4_tiip.git app/Plugin/TheItemIsPopular42;
-php bin/console eccube:plugin:install --code="TheItemIsPopular42"
+git clone https://github.com/cajiya/ec-cube4_tiip.git app/Plugin/TheItemIsPopular43;
+php bin/console eccube:plugin:install --code="TheItemIsPopular43"
 ```
 

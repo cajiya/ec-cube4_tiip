@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\TheItemIsPopular42\EventListener;
+namespace Plugin\TheItemIsPopular43\EventListener;
 
 use Eccube\Event\TemplateEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -40,7 +40,7 @@ class TiipEventListener implements EventSubscriberInterface
       $event->addSnippet( 'Tiip/snipet.twig' );
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
           'Product/detail.twig' => ['TiipEventListenerFunction'],

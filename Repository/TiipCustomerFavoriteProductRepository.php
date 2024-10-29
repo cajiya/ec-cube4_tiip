@@ -1,6 +1,6 @@
 <?php
 
-namespace Plugin\TheItemIsPopular42\Repository;
+namespace Plugin\TheItemIsPopular43\Repository;
 
 use Eccube\Entity\CustomerFavoriteProduct;
 use Eccube\Repository\AbstractRepository;

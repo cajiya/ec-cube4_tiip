@@ -1,5 +1,5 @@
 {
-    "name": "ec-cube/theitemispopular42",
+    "name": "ec-cube/theitemispopular43",
     "version": "4.2.0",
     "description": "商品ページ 人気演出機能",
     "type": "eccube-plugin",
@@ -7,7 +7,7 @@
       "ec-cube/plugin-installer": "^2.0"
     },
     "extra": {
-      "code": "TheItemIsPopular42"
+      "code": "TheItemIsPopular43"
     }
   }
   
